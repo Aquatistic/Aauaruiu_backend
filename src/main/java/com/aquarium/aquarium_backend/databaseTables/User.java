@@ -17,7 +17,8 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.password = password;
-        // We should probably store passwords hashed
+        // We should probably store passwords hashed, but i doubt it should be
+        // implemented here
     }
 
     private boolean checkPassword(String password) {
