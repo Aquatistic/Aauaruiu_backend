@@ -10,9 +10,11 @@ import jakarta.persistence.Id;
 public class SensorType {
     private @Id @GeneratedValue int sensorTypeId;
     private String sensorTypeName;
+    private String outputUnit;
 
-    public SensorType(String sensorTypeName) {
+    public SensorType(String sensorTypeName, String outputUnit) {
         this.sensorTypeName = sensorTypeName;
+        this.outputUnit = outputUnit;
     }
 
     @Override
@@ -23,7 +25,8 @@ public class SensorType {
             return false;
         var comparedSensorType = (SensorType) comparedObject;
         return sensorTypeId == comparedSensorType.sensorTypeId
-                && Objects.equals(sensorTypeName, comparedSensorType.sensorTypeName);
+                && Objects.equals(sensorTypeName, comparedSensorType.sensorTypeName)
+                && Objects.equals(outputUnit, comparedSensorType.outputUnit);
     }
 
     @Override
@@ -41,5 +44,13 @@ public class SensorType {
 
     public void setSensorTypeName(String sensorTypeName) {
         this.sensorTypeName = sensorTypeName;
+    }
+
+    public String getOutputUnit() {
+        return this.outputUnit;
+    }
+
+    public void setOutputUnit(String outputUnit) {
+        this.outputUnit = outputUnit;
     }
 }
