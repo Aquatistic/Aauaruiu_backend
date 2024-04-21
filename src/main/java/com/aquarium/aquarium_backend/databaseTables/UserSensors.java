@@ -1,5 +1,7 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,6 +19,23 @@ public class UserSensors {
     @ManyToOne
     @JoinColumn(name = "sensorTypeId")
     private SensorType sensorType;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userSensorId, aquarium, sensorType);
+    }
+
+    @Override
+    public boolean equals(Object comparedObject) {
+        if (this == comparedObject)
+            return true;
+        if (comparedObject == null || comparedObject.getClass() != UserSensors.class)
+            return false;
+        var comparedUserSensors = (UserSensors) comparedObject;
+        return userSensorId == comparedUserSensors.userSensorId
+                && Objects.equals(aquarium, comparedUserSensors.aquarium)
+                && Objects.equals(sensorType, comparedUserSensors.sensorType);
+    }
 
     public UserSensors(Aquarium aquarium, SensorType sensorType) {
         this.aquarium = aquarium;
