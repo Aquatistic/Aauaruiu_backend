@@ -1,5 +1,7 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,6 +22,24 @@ public class Aquarium {
         this.aquariumName = aquariumName;
         this.aquariumCapacity = aquariumCapacity;
         this.user = user;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(aquariumId, aquariumName, aquariumCapacity, user);
+    }
+
+    @Override
+    public boolean equals(Object comparedObject) {
+        if (this == comparedObject)
+            return true;
+        if (comparedObject == null || comparedObject.getClass() != Aquarium.class)
+            return false;
+        var comparedAquarium = (Aquarium) comparedObject;
+        return aquariumId == comparedAquarium.aquariumId
+                && Objects.equals(aquariumName, comparedAquarium.aquariumName)
+                && aquariumCapacity == comparedAquarium.aquariumCapacity
+                && Objects.equals(user, comparedAquarium.user);
     }
 
     public int getAquariumId() {
