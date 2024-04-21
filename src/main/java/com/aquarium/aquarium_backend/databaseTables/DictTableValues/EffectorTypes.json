@@ -1,0 +1,20 @@
+{
+    "effectorTypes": [
+        {
+            "name": "Lights",
+            "unit": "%"
+        },
+        {
+            "name": "Feeder",
+            "unit": "g"
+        },
+        {
+            "name": "Heater",
+            "unit": "V"
+        },
+        {
+            "name": "Pump",
+            "unit": "rpm"
+        }
+    ]
+}
