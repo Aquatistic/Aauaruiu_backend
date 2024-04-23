@@ -10,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class UserSensors {
+    public UserSensors() {
+    }
     private @Id @GeneratedValue int userSensorId;
 
     @ManyToOne

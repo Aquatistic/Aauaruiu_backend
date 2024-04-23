@@ -10,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Aquarium {
+    public Aquarium() {
+    }
     private @Id @GeneratedValue int aquariumId;
     private String aquariumName;
     private float aquariumCapacity;

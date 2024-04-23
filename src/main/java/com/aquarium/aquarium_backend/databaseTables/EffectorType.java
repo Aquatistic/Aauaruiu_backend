@@ -2,10 +2,14 @@ package com.aquarium.aquarium_backend.databaseTables;
 
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+@Entity
 public class EffectorType {
+    public EffectorType() {
+    }
     private @Id @GeneratedValue int effectorTypeId;
     private String effectorTypeName;
     private String outputUnit;

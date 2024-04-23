@@ -11,6 +11,8 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Measurement {
+    public Measurement() {
+    }
     private @Id @GeneratedValue int measurementId;
     @ManyToOne
     @JoinColumn(name = "userSensorId")

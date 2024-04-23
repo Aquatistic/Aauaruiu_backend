@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class SensorType {
+    public SensorType() {
+    }
     private @Id @GeneratedValue int sensorTypeId;
     private String sensorTypeName;
     private String outputUnit;
