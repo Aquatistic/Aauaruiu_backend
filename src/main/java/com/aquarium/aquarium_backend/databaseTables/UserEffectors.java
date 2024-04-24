@@ -7,12 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
 
 @Entity
 public class UserEffectors {
+    public UserEffectors() {
+    }
     private @Id @GeneratedValue int userEffectorTypeId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "effectorTypeId")
     private EffectorType effectorType;
 

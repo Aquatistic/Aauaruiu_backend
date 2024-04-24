@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class User {
+    public User() {
+    }
     private @Id @GeneratedValue Long userId;
     private String userName;
     private String email;
