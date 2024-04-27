@@ -34,3 +34,7 @@ jobs:
             java-version: '17'
         - name: Run tests
           run: mvn test
+          env:
+            SPRING_DATASOURCE_URL: ${{ secrets.TEST_CONTAINER_URL}}
+            SPRING_DATASOURCE_USERNAME: ${{ secrets.TEST_CONTAINER_USERNAME }}
+            SPRING_DATASOURCE_PASSWORD: ${{ secrets.TEST_CONTAINER_PASSWORD }}
