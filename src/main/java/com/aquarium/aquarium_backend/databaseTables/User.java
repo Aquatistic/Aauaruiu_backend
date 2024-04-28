@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "AppUser")
@@ -56,7 +57,7 @@ public class User {
     public String getUserEmail() {
         return this.email;
     }
-
+//    @JsonIgnore
     public String getUserPassword() {
         return this.password;
     }
