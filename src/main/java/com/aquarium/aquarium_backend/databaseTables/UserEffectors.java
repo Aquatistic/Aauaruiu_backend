@@ -1,19 +1,16 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.FetchType;
+import java.util.Objects;
 
 @Entity
 public class UserEffectors {
     public UserEffectors() {
     }
-    private @Id @GeneratedValue int userEffectorTypeId;
+
+    private @Id
+    @GeneratedValue int userEffectorTypeId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "effectorTypeId")
@@ -27,7 +24,7 @@ public class UserEffectors {
     private String effectorControlType;
 
     public UserEffectors(EffectorType effectorType, Aquarium aquarium, float effectorValue,
-            String effectorControlType) {
+                         String effectorControlType) {
         this.effectorType = effectorType;
         this.aquarium = aquarium;
         this.effectorValue = effectorValue;

@@ -1,18 +1,16 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import java.util.Objects;
 
 @Entity
 public class UserSensors {
     public UserSensors() {
     }
-    private @Id @GeneratedValue int userSensorId;
+
+    private @Id
+    @GeneratedValue int userSensorId;
 
     @ManyToOne
     @JoinColumn(name = "aquariumId")

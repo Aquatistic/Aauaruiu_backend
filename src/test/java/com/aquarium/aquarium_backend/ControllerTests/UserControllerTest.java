@@ -1,13 +1,12 @@
 package com.aquarium.aquarium_backend.ControllerTests;
 
 import com.aquarium.aquarium_backend.Controllers.UserController;
-import com.aquarium.aquarium_backend.databaseTables.User;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import com.aquarium.aquarium_backend.Services.UserService;
+import com.aquarium.aquarium_backend.databaseTables.User;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,16 +1,18 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
-import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+
+import java.util.Objects;
 
 @Entity
 public class SensorType {
     public SensorType() {
     }
-    private @Id @GeneratedValue int sensorTypeId;
+
+    private @Id
+    @GeneratedValue int sensorTypeId;
     private String sensorTypeName;
     private String outputUnit;
 

@@ -1,10 +1,11 @@
 package com.aquarium.aquarium_backend.Controllers;
 
+import com.aquarium.aquarium_backend.Services.UserService;
+import com.aquarium.aquarium_backend.databaseTables.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.aquarium.aquarium_backend.Services.UserService;
-import com.aquarium.aquarium_backend.databaseTables.User;
+
 import java.util.List;
 
 @RestController
