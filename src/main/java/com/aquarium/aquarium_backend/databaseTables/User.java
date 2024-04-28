@@ -1,18 +1,20 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
-import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "AppUser")
 public class User {
     public User() {
     }
-    private @Id @GeneratedValue Long userId;
+
+    private @Id
+    @GeneratedValue Long userId;
     private String userName;
     private String email;
     private String password;
@@ -57,6 +59,7 @@ public class User {
         return this.email;
     }
 
+    //    @JsonIgnore
     public String getUserPassword() {
         return this.password;
     }
