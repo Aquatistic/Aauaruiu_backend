@@ -2,6 +2,8 @@ package com.aquarium.aquarium_backend.Controllers;
 
 import com.aquarium.aquarium_backend.Services.UserService;
 import com.aquarium.aquarium_backend.databaseTables.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,8 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> usersList = userService.getAllUsers();
+        return new ResponseEntity<>(usersList, HttpStatus.OK);
     }
 }
