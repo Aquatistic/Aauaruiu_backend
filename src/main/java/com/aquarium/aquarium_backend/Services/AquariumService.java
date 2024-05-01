@@ -20,5 +20,8 @@ public class AquariumService {
     public List<Aquarium> getAllUsersAquariums(Long userId) {
         return aquariumRepository.findAquariumsByUserId(userId);
     }
-
+    
+    public List<Aquarium> getAllAquariums() {
+        return aquariumRepository.findAll();
+    }
 }
