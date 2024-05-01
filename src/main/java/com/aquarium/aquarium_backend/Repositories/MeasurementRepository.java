@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.aquarium.aquarium_backend.databaseTables.Measurement;
 
 @Repository
-public interface MeasurementRepositiory extends JpaRepository<Measurement, Long> {
+public interface MeasurementRepository extends JpaRepository<Measurement, Long> {
 }
