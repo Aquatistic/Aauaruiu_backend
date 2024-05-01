@@ -17,7 +17,7 @@ public class SensorTypeService {
         this.sensorTypeRepository = sensorTypeRepository;
     }
 
-    public List<SensorType> getAllUsers() {
+    public List<SensorType> getAllSensorTypes() {
         return sensorTypeRepository.findAll();
     }
 }
