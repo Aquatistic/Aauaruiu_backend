@@ -9,8 +9,7 @@ public class UserEffectors {
     public UserEffectors() {
     }
 
-    private @Id
-    @GeneratedValue int userEffectorTypeId;
+    private @Id @GeneratedValue Long userEffectorTypeId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "effectorTypeId")
@@ -24,7 +23,7 @@ public class UserEffectors {
     private String effectorControlType;
 
     public UserEffectors(EffectorType effectorType, Aquarium aquarium, float effectorValue,
-                         String effectorControlType) {
+            String effectorControlType) {
         this.effectorType = effectorType;
         this.aquarium = aquarium;
         this.effectorValue = effectorValue;
@@ -50,7 +49,7 @@ public class UserEffectors {
                 && effectorControlType.equals(comparedUserEffectors.effectorControlType);
     }
 
-    public int getUserEffectorTypeId() {
+    public Long getUserEffectorTypeId() {
         return this.userEffectorTypeId;
     }
 
