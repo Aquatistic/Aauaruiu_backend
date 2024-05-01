@@ -3,7 +3,7 @@ package com.aquarium.aquarium_backend.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aquarium.aquarium_backend.Repositories.MeasurementRepositiory;
+import com.aquarium.aquarium_backend.Repositories.MeasurementRepository;
 import com.aquarium.aquarium_backend.databaseTables.Measurement;
 
 import java.util.List;
@@ -11,10 +11,10 @@ import java.util.List;
 @Service
 public class MeasurementService {
 
-    private final MeasurementRepositiory measurementRepository;
+    private final MeasurementRepository measurementRepository;
 
     @Autowired
-    public MeasurementService(MeasurementRepositiory measurementRepository) {
+    public MeasurementService(MeasurementRepository measurementRepository) {
         this.measurementRepository = measurementRepository;
     }
 
