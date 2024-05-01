@@ -1,20 +1,18 @@
-{
-    "sensorTypes": [
-        {
-            "name": "DS18B20",
-            "unit": "°C"
-        },
-        {
-            "name": "SE045",
-            "unit": "m"
-        },
-        {
-            "name": "OV5647",
-            "unit": "colour"
-        },
-        {
-            "name": "SEN0161-V2",
-            "unit": "value"
-        }
-    ]
-}
+[
+    {
+        "name": "DS18B20",
+        "unit": "°C"
+    },
+    {
+        "name": "SE045",
+        "unit": "m"
+    },
+    {
+        "name": "OV5647",
+        "unit": "colour"
+    },
+    {
+        "name": "SEN0161-V2",
+        "unit": "value"
+    }
+]
