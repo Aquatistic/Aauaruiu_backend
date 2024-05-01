@@ -9,8 +9,7 @@ public class UserSensors {
     public UserSensors() {
     }
 
-    private @Id
-    @GeneratedValue int userSensorId;
+    private @Id @GeneratedValue Long userSensorId;
 
     @ManyToOne
     @JoinColumn(name = "aquariumId")
@@ -42,7 +41,7 @@ public class UserSensors {
         this.sensorType = sensorType;
     }
 
-    public int getUserSensorId() {
+    public Long getUserSensorId() {
         return this.userSensorId;
     }
 
