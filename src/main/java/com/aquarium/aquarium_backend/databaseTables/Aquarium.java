@@ -8,7 +8,8 @@ import java.util.Objects;
 public class Aquarium {
     public Aquarium() {
     }
-    private @Id @GeneratedValue int aquariumId;
+
+    private @Id @GeneratedValue Long aquariumId;
     private String aquariumName;
     private float aquariumCapacity;
 
@@ -40,7 +41,7 @@ public class Aquarium {
                 && Objects.equals(user, comparedAquarium.user);
     }
 
-    public int getAquariumId() {
+    public Long getAquariumId() {
         return this.aquariumId;
     }
 
