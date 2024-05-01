@@ -9,7 +9,8 @@ import java.util.Objects;
 public class Measurement {
     public Measurement() {
     }
-    private @Id @GeneratedValue int measurementId;
+
+    private @Id @GeneratedValue Long measurementId;
     @ManyToOne
     @JoinColumn(name = "userSensorId")
     private UserSensors userSensor;
@@ -44,7 +45,7 @@ public class Measurement {
         return Objects.hash(measurementId, userSensor, alarmStatus, measurementValue, measurementTimestamp);
     }
 
-    public int getMeasurementId() {
+    public Long getMeasurementId() {
         return this.measurementId;
     }
 
