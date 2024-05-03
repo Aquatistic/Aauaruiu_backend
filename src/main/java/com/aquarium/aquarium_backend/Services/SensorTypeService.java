@@ -20,4 +20,8 @@ public class SensorTypeService {
     public List<SensorType> getAllSensorTypes() {
         return sensorTypeRepository.findAll();
     }
+
+    public SensorType getSensorTypeById(int id) {
+        return sensorTypeRepository.findById(id).orElse(new SensorType());
+    }
 }
