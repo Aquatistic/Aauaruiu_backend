@@ -3,6 +3,7 @@ package com.aquarium.aquarium_backend.Controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +23,10 @@ public class SensorTypeController {
     @GetMapping
     public List<SensorType> getAllSensorTypes() {
         return sensorTypeService.getAllSensorTypes();
+    }
+
+    @GetMapping(path = "{id}")
+    public SensorType getSensorTypeById(@PathVariable Integer id) {
+        return sensorTypeService.getSensorTypeById(id);
     }
 }
