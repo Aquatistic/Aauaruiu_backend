@@ -1,14 +1,15 @@
 package com.aquarium.aquarium_backend.Controllers;
 
-import java.util.List;
-
+import com.aquarium.aquarium_backend.Services.SensorTypeService;
+import com.aquarium.aquarium_backend.databaseTables.SensorType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aquarium.aquarium_backend.Services.SensorTypeService;
-import com.aquarium.aquarium_backend.databaseTables.SensorType;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/sensorType")
@@ -21,12 +22,14 @@ public class SensorTypeController {
     }
 
     @GetMapping
-    public List<SensorType> getAllSensorTypes() {
-        return sensorTypeService.getAllSensorTypes();
+    public ResponseEntity<List<SensorType>> getAllSensorTypes() {
+        List<SensorType> allSensorTypes = sensorTypeService.getAllSensorTypes();
+        return new ResponseEntity<>(allSensorTypes, HttpStatus.OK);
     }
 
     @GetMapping(path = "{id}")
-    public SensorType getSensorTypeById(@PathVariable Integer id) {
-        return sensorTypeService.getSensorTypeById(id);
+    public ResponseEntity<SensorType> getSensorTypeById(@PathVariable Integer id) {
+        SensorType sensorType = sensorTypeService.getSensorTypeById(id);
+        return new ResponseEntity<>(sensorType, HttpStatus.OK);
     }
 }
