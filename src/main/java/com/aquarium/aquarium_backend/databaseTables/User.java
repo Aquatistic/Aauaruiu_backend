@@ -1,5 +1,6 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -59,7 +60,7 @@ public class User {
         return this.email;
     }
 
-    //    @JsonIgnore
+    @JsonIgnore
     public String getUserPassword() {
         return this.password;
     }

@@ -2,6 +2,7 @@ package com.aquarium.aquarium_backend.RepositoryTests;
 
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.databaseTables.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -18,6 +19,10 @@ public class UserRepostioryTest {
     @Autowired
     UserRepository userRepository;
 
+    @BeforeEach
+    void init() {
+        userRepository.deleteAll();
+    }
     @Test
     void ReturnUserById() {
         User user = new User("Lucas", "lucas@gmail.com", "1234");

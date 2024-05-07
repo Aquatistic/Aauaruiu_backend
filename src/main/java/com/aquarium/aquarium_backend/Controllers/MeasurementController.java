@@ -1,11 +1,12 @@
 package com.aquarium.aquarium_backend.Controllers;
 
+import com.aquarium.aquarium_backend.Services.MeasurementService;
+import com.aquarium.aquarium_backend.databaseTables.Measurement;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.aquarium.aquarium_backend.Services.MeasurementService;
-import com.aquarium.aquarium_backend.databaseTables.Measurement;
 
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class MeasurementController {
     }
 
     @GetMapping
-    public List<Measurement> getAllMeasurements() {
-        return measurementService.getAllMeasurements();
+    public ResponseEntity<List<Measurement>> getAllMeasurements() {
+        List<Measurement> allMeasurements = measurementService.getAllMeasurements();
+        return new ResponseEntity<>(allMeasurements, HttpStatus.OK);
     }
 }

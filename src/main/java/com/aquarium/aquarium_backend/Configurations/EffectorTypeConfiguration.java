@@ -23,7 +23,7 @@ public class EffectorTypeConfiguration {
         JSONParser jsonParser = new JSONParser(1);
         try {
             JSONArray effectorTypes = (JSONArray) jsonParser.parse(new FileReader(
-                    "/resources/EffectorTypes.json"));
+                    "src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/EffectorTypes.json"));
             return args -> {
                 effectorTypes.forEach((effectorType) -> {
                     try {

@@ -1,13 +1,14 @@
 package com.aquarium.aquarium_backend.Controllers;
 
-import java.util.List;
-
+import com.aquarium.aquarium_backend.Services.UserSensorService;
+import com.aquarium.aquarium_backend.databaseTables.UserSensors;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aquarium.aquarium_backend.Services.UserSensorService;
-import com.aquarium.aquarium_backend.databaseTables.UserSensors;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/userSensor")
@@ -19,7 +20,8 @@ public class UserSensorControllers {
     }
 
     @GetMapping
-    public List<UserSensors> getAllUsers() {
-        return userSensorService.getAllUsers();
+    public ResponseEntity<List<UserSensors>> getAllUserSensors() {
+        List<UserSensors> userSensors = userSensorService.getAllUsers();
+        return new ResponseEntity<>(userSensors, HttpStatus.OK);
     }
 }
