@@ -15,6 +15,6 @@ ARG DEPENDENCY=/workspace/app/target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
-COPY src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/SensorTypes.json resources/SensorTypes.json
-COPY src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/EffectorTypes.json resources/EffectorTypes.json
+COPY src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/SensorTypes.json src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/SensorTypes.json
+COPY src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/EffectorTypes.json src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/EffectorTypes.json
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.aquarium.aquarium_backend.AquariumBackendApplication"]

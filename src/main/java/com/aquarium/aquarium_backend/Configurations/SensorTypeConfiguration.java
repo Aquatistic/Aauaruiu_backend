@@ -22,7 +22,7 @@ public class SensorTypeConfiguration {
         JSONParser jsonParser = new JSONParser(1);
         try {
             JSONArray sensorTypes = (JSONArray) jsonParser.parse(new FileReader(
-                    "/resources/SensorTypes.json"));
+                    "src/main/java/com/aquarium/aquarium_backend/databaseTables/DictTableValues/SensorTypes.json"));
             return args -> {
                 sensorTypes.forEach((sensorType) -> {
                     try {
