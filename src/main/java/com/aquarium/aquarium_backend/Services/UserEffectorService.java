@@ -1,11 +1,10 @@
 package com.aquarium.aquarium_backend.Services;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.aquarium.aquarium_backend.Repositories.UserEffectorRepository;
 import com.aquarium.aquarium_backend.databaseTables.UserEffectors;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserEffectorService {
@@ -17,5 +16,9 @@ public class UserEffectorService {
 
     public List<UserEffectors> getAllUsers() {
         return userEffectorRepository.findAll();
+    }
+
+    public List<UserEffectors> getUserEffectorsByAquariumId(Long aquariumId) {
+        return userEffectorRepository.findUserEffectorsByAquariumId(aquariumId);
     }
 }
