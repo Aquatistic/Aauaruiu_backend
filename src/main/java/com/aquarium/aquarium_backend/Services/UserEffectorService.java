@@ -22,7 +22,7 @@ public class UserEffectorService {
         return userEffectorRepository.findUserEffectorsByAquariumId(aquariumId);
     }
 
-    public void postEffector(UserEffectors userEffectors){
-        userEffectorRepository.save(userEffectors);
+    public UserEffectors postEffector(UserEffectors userEffectors){
+        return userEffectorRepository.save(userEffectors);
     }
 }
