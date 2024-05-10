@@ -21,4 +21,8 @@ public class UserEffectorService {
     public List<UserEffectors> getUserEffectorsByAquariumId(Long aquariumId) {
         return userEffectorRepository.findUserEffectorsByAquariumId(aquariumId);
     }
+
+    public void postEffector(UserEffectors userEffectors){
+        userEffectorRepository.save(userEffectors);
+    }
 }
