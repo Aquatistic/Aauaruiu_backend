@@ -33,4 +33,5 @@ public class UserEffectorsServiceTest {
         assertThat(effectorsList).isEqualTo(expectedEffectors);
 
     }
+    
 }
