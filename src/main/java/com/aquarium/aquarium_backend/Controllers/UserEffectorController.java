@@ -4,10 +4,7 @@ import com.aquarium.aquarium_backend.Services.UserEffectorService;
 import com.aquarium.aquarium_backend.databaseTables.UserEffectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +28,9 @@ public class UserEffectorController {
         return new ResponseEntity<>(userEffectors, HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<UserEffectors> addUserEffector(@RequestBody UserEffectors userEffector) {
+        UserEffectors createdUserEffector = userEffectorService.postEffector(userEffector);
+        return new ResponseEntity<>(createdUserEffector, HttpStatus.CREATED);
+    }
 }
