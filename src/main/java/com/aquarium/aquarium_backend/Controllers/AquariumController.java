@@ -22,9 +22,14 @@ public class AquariumController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<List<Aquarium>> getAquariumByUserId(@PathVariable Long userId) {
-        List<Aquarium> aquariumList = aquariumService.getAllUsersAquariums(userId);
-        return new ResponseEntity<>(aquariumList, HttpStatus.OK);
+    public ResponseEntity<?> getAquariumByUserId(@PathVariable Long userId) {
+        try {
+            List<Aquarium> aquariumList = aquariumService.getAllUsersAquariums(userId);
+            return new ResponseEntity<>(aquariumList, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping
