@@ -7,6 +7,13 @@ on:
     branches:
       - master
 jobs:
+  formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: axel-op/googlejavaformat-action@v3.6.0
+        with:
+          args: "--skip-sorting-imports --replace"
   build:
     runs-on: ubuntu-latest
     steps:
@@ -17,10 +24,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
-      - name: Google Java Format
-        uses: axel-op/googlejavaformat-action@v3.6.0
-        with:
-          args: "--skip-sorting-imports"
       - name: Build with Maven
         run:  mvn clean install -DskipTests=true
       - name : Build Docker Image
