@@ -26,7 +26,7 @@ public class MeasurementService {
   }
 
   public Boolean addMeasurements(List<Pair<Measurement, Long>> measurements) {
-    for (var measurement : measurements) {
+                   for (var measurement : measurements) {
       try {
         var userSensor = userSensorRepository.findById(measurement.getSecond()).get();
         measurement.getFirst().setUserSensor(userSensor);

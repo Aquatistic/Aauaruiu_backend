@@ -40,9 +40,14 @@ public class UserEffectorService {
             .findById(aquariumId)
             .orElseThrow(() -> new Exception("Aquarium does not exist"));
     EffectorType effectorType =
-        effectorTypeRepository
-            .findById(effectorTypeId)
+        effectorTypeRepository.findById(effectorTypeId)
             .orElseThrow(() -> new Exception("Effector Type does not exist"));
+
+
+
+
+
+
     UserEffectors userEffectors =
         new UserEffectors(effectorType, aquarium, effectorValue, effectorControlType);
     return userEffectorRepository.save(userEffectors);
