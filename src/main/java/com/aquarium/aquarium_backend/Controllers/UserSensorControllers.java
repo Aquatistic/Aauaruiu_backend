@@ -34,8 +34,8 @@ public class UserSensorControllers {
     }
 
     @PostMapping("add")
-    public ResponseEntity<Boolean> addUserSensor(@RequestBody UserSensors userSensor) {
-        if (!userSensorService.addUser(userSensor)) {
+    public ResponseEntity<Boolean> addUserSensor(Long aquariumId, int sensorTypeId) {
+        if (!userSensorService.addUserSensor(aquariumId, sensorTypeId)) {
             return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(true, HttpStatus.CREATED);

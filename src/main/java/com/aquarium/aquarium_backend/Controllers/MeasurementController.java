@@ -3,12 +3,10 @@ package com.aquarium.aquarium_backend.Controllers;
 import com.aquarium.aquarium_backend.Services.MeasurementService;
 import com.aquarium.aquarium_backend.databaseTables.Measurement;
 
-import org.assertj.core.groups.Tuple;
 import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
