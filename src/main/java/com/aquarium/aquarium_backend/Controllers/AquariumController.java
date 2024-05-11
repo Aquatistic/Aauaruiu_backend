@@ -3,12 +3,10 @@ package com.aquarium.aquarium_backend.Controllers;
 import com.aquarium.aquarium_backend.Services.AquariumService;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
 import java.util.List;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api/v1/aquarium")
@@ -33,5 +31,18 @@ public class AquariumController {
   public ResponseEntity<List<Aquarium>> getAllAquariums() {
     List<Aquarium> aquariumList = aquariumService.getAllAquariums();
     return new ResponseEntity<>(aquariumList, HttpStatus.OK);
+  }
+
+  @PostMapping("add")
+  public ResponseEntity<?> addAquarium(@RequestBody Map<String, Object> payload) {
+    try {
+      String aquariumName = payload.get("aquariumName").toString();
+      float aquariumCapacity = Float.valueOf(payload.get("aquariumCapacity").toString());
+      Long userId = Long.valueOf(payload.get("userId").toString());
+      Aquarium aquarium = aquariumService.addAquarium(aquariumName, aquariumCapacity, userId);
+      return new ResponseEntity<>(aquarium, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
   }
 }
