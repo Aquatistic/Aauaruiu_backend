@@ -1,7 +1,9 @@
 package com.aquarium.aquarium_backend.Services;
 
 import com.aquarium.aquarium_backend.Repositories.AquariumRepository;
+import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
+import com.aquarium.aquarium_backend.databaseTables.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +13,17 @@ import java.util.List;
 public class AquariumService {
 
     private final AquariumRepository aquariumRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AquariumService(AquariumRepository aquariumRepository) {
+    public AquariumService(AquariumRepository aquariumRepository, UserRepository userRepository) {
+
         this.aquariumRepository = aquariumRepository;
+        this.userRepository = userRepository;
     }
 
-    public List<Aquarium> getAllUsersAquariums(Long userId) {
+    public List<Aquarium> getAllUsersAquariums(Long userId) throws Exception{
+        User user = userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
         return aquariumRepository.findAquariumsByUserId(userId);
     }
     

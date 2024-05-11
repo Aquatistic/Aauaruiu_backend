@@ -25,19 +25,21 @@ public class AquariumControllerTest {
     AquariumService aquariumService;
 
     @Test
-    void getAllUsersAquariumsEmptyAquariumAndUsers() {
+    void getAllUsersAquariumsEmptyAquariumAndUsers() throws Exception {
+        Exception e = new Exception("User does not exist");
         List<Aquarium> expectedAquariums = List.of();
-        when(aquariumService.getAllUsersAquariums(1L)).thenReturn(expectedAquariums);
-        assertThat(aquariumController.getAquariumByUserId(1L)).isEqualTo(new ResponseEntity<>(expectedAquariums, HttpStatus.OK));
+        when(aquariumService.getAllUsersAquariums(1L)).thenThrow(e);
+        assertThat(aquariumController.getAquariumByUserId(1L)).isEqualTo(new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST));
     }
 
     @Test
-    void getAllUsersAquariumsNonEmpty() {
+    void getAllUsersAquariumsNonEmpty() throws Exception {
+        Long userId = 1L;
         User user = new User("Lucas", "lucas@gmail.com", "1234");
         Aquarium aquarium = new Aquarium("My Aquarium", 100.0f, user);
         Aquarium aquarium2 = new Aquarium("My Aquarium2", 130.0f, user);
         List<Aquarium> expectedAquariums = List.of(aquarium, aquarium2);
-        when(aquariumService.getAllUsersAquariums(user.getUserId())).thenReturn(expectedAquariums);
-        assertThat(aquariumController.getAquariumByUserId(user.getUserId())).isEqualTo(new ResponseEntity<>(expectedAquariums, HttpStatus.OK));
+        when(aquariumService.getAllUsersAquariums(userId)).thenReturn(expectedAquariums);
+        assertThat(aquariumController.getAquariumByUserId(userId)).isEqualTo(new ResponseEntity<>(expectedAquariums, HttpStatus.OK));
     }
 }
