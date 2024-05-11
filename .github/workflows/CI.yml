@@ -44,5 +44,6 @@ jobs:
           with:
             distribution: 'adopt'
             java-version: '17'
+            cache: maven
         - name: Run tests
           run: mvn test -Dspring.profiles.active=remote-test-containers
