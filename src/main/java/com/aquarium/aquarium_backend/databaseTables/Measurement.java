@@ -2,8 +2,12 @@ package com.aquarium.aquarium_backend.databaseTables;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Measurement {
@@ -17,9 +21,13 @@ public class Measurement {
 
     private boolean alarmStatus;
     private float measurementValue;
-    private Date measurementTimestamp;
 
-    public Measurement(UserSensors userSensor, boolean alarmStatus, float measurementValue, Date measurementTimestamp) {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime measurementTimestamp;
+
+    public Measurement(UserSensors userSensor, boolean alarmStatus, float measurementValue,
+            LocalDateTime measurementTimestamp) {
         this.userSensor = userSensor;
         this.alarmStatus = alarmStatus;
         this.measurementValue = measurementValue;
@@ -73,11 +81,11 @@ public class Measurement {
         this.measurementValue = measurementValue;
     }
 
-    public Date getMeasurementTimestamp() {
+    public LocalDateTime getMeasurementTimestamp() {
         return this.measurementTimestamp;
     }
 
-    public void setMeasurementTimestamp(Date measurementTimestamp) {
+    public void setMeasurementTimestamp(LocalDateTime measurementTimestamp) {
         this.measurementTimestamp = measurementTimestamp;
     }
 
