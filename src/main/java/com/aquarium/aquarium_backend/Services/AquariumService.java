@@ -30,4 +30,12 @@ public class AquariumService {
   public List<Aquarium> getAllAquariums() {
     return aquariumRepository.findAll();
   }
+
+  public Aquarium addAquarium(String aquariumName, float aquariumCapacity, Long userId)
+      throws Exception {
+    User user =
+        userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
+    Aquarium createdAquarium = new Aquarium(aquariumName, aquariumCapacity, user);
+    return aquariumRepository.save(createdAquarium);
+  }
 }
