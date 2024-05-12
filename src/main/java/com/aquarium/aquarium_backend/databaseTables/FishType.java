@@ -33,10 +33,6 @@ public class FishType {
     return fishTypeId;
   }
 
-  public void setFishTypeId(int fishTypeId) {
-    this.fishTypeId = fishTypeId;
-  }
-
   public String getName() {
     return name;
   }

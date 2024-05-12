@@ -49,6 +49,10 @@ public class Fish {
     this.count = count;
   }
 
+  public Long getFishId() {
+    return fishId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
