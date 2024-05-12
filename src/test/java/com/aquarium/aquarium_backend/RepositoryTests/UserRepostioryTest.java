@@ -1,5 +1,7 @@
 package com.aquarium.aquarium_backend.RepositoryTests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.databaseTables.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,28 +11,23 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepostioryTest {
 
-    @Autowired
-    UserRepository userRepository;
+  @Autowired UserRepository userRepository;
 
-    @BeforeEach
-    void init() {
-        userRepository.deleteAll();
-    }
-    @Test
-    void ReturnUserById() {
-        User user = new User("Lucas", "lucas@gmail.com", "1234");
-        userRepository.save(user);
-        User user2 = userRepository.findById(user.getUserId()).get();
-        assertThat(user).isEqualTo(user2);
+  @BeforeEach
+  void init() {
+    userRepository.deleteAll();
+  }
 
-    }
-
-
+  @Test
+  void ReturnUserById() {
+    User user = new User("Lucas", "lucas@gmail.com", "1234");
+    userRepository.save(user);
+    User user2 = userRepository.findById(user.getUserId()).get();
+    assertThat(user).isEqualTo(user2);
+  }
 }
