@@ -1,44 +1,43 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-
 import java.util.Objects;
 
 @Entity
 public class FishType {
-    public FishType() {}
-    private @Id @GeneratedValue int fishTypeId;
-    private String name;
+  public FishType() {}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FishType fishType)) return false;
-        return getFishTypeId() == fishType.getFishTypeId() && Objects.equals(getName(), fishType.getName());
-    }
+  private @Id @GeneratedValue int fishTypeId;
+  private String name;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFishTypeId(), getName());
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof FishType fishType)) return false;
+    return getFishTypeId() == fishType.getFishTypeId()
+        && Objects.equals(getName(), fishType.getName());
+  }
 
-    public int getFishTypeId() {
-        return fishTypeId;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(getFishTypeId(), getName());
+  }
 
-    public void setFishTypeId(int fishTypeId) {
-        this.fishTypeId = fishTypeId;
-    }
+  public int getFishTypeId() {
+    return fishTypeId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setFishTypeId(int fishTypeId) {
+    this.fishTypeId = fishTypeId;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
+  public void setName(String name) {
+    this.name = name;
+  }
 }
