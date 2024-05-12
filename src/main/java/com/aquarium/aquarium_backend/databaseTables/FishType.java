@@ -12,6 +12,10 @@ public class FishType {
   private @Id @GeneratedValue int fishTypeId;
   private String name;
 
+  public FishType(String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
