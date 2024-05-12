@@ -64,7 +64,8 @@ public class EnvironmentalRequirements {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof EnvironmentalRequirements that)) return false;
+    if (o == null || getClass() != o.getClass()) return false;
+    EnvironmentalRequirements that = (EnvironmentalRequirements) o;
     return getEnvironmentalRequirementsId() == that.getEnvironmentalRequirementsId()
         && Float.compare(getValue(), that.getValue()) == 0
         && Objects.equals(getFishType(), that.getFishType())

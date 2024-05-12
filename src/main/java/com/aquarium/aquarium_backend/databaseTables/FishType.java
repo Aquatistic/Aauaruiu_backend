@@ -19,7 +19,8 @@ public class FishType {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof FishType fishType)) return false;
+    if (o == null || getClass() != o.getClass()) return false;
+    var fishType = (FishType) o;
     return getFishTypeId() == fishType.getFishTypeId()
         && Objects.equals(getName(), fishType.getName());
   }

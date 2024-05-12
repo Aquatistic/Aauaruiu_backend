@@ -56,7 +56,8 @@ public class Fish {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof Fish fish)) return false;
+    if (o == null || getClass() != o.getClass()) return false;
+    var fish = (Fish) o;
     return getCount() == fish.getCount()
         && Objects.equals(fishId, fish.fishId)
         && Objects.equals(getFishType(), fish.getFishType())
