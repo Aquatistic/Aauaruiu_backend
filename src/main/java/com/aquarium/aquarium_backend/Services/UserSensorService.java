@@ -33,8 +33,8 @@ public class UserSensorService {
   public boolean addUserSensor(Long aquariumId, int sensorTypeId) {
     try {
       var userSensor = new UserSensors();
-      userSensor.setAquarium(aquariumRepository.findById(aquariumId).orElse(null));
-      userSensor.setSensorType(sensorTypeRepository.findById(sensorTypeId).orElse(null));
+      userSensor.setAquarium(aquariumRepository.findById(aquariumId).get());
+      userSensor.setSensorType(sensorTypeRepository.findById(sensorTypeId).get());
       userSensorRepository.save(userSensor);
     } catch (Exception e) {
       return false;
