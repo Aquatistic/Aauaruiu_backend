@@ -1,7 +1,6 @@
 package com.aquarium.aquarium_backend.Repositories;
 
 import com.aquarium.aquarium_backend.databaseTables.Measurement;
-import com.aquarium.aquarium_backend.databaseTables.UserSensors;
 
 import java.util.List;
 
@@ -12,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MeasurementRepository extends JpaRepository<Measurement, Long> {
 
-    @Query("Select mes from Measurement mes where mes.userSensor.userSensorId= :userSensorId")
-    List<Measurement> findMeasurementsByUserSensorId(Long userSensorId);
+  @Query("Select mes from Measurement mes where mes.userSensor.userSensorId= :userSensorId")
+  List<Measurement> findMeasurementsByUserSensorId(Long userSensorId);
 }

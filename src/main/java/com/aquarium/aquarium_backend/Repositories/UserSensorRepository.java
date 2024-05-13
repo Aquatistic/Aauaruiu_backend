@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserSensorRepository extends JpaRepository<UserSensors, Long> {
-    @Query("Select us from UserSensors us where us.aquarium.aquariumId= :aquariumId")
-    List<UserSensors> findUserSensorsByAquariumId(Long aquariumId);
+  @Query("Select us from UserSensors us where us.aquarium.aquariumId= :aquariumId")
+  List<UserSensors> findUserSensorsByAquariumId(Long aquariumId);
 }

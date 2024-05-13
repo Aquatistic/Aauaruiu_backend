@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping(path = "api/v1/userSensor")
@@ -29,7 +28,8 @@ public class UserSensorControllers {
 
   @GetMapping("aquarium/{aquariumId}")
   public ResponseEntity<List<UserSensors>> getSensorsByAquariumId(@PathVariable Long aquariumId) {
-    return new ResponseEntity<>(userSensorService.getUserSensorsByAquariumId(aquariumId), HttpStatus.OK);
+    return new ResponseEntity<>(
+        userSensorService.getUserSensorsByAquariumId(aquariumId), HttpStatus.OK);
   }
 
   @PostMapping("add")
