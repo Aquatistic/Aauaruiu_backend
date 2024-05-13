@@ -26,6 +26,10 @@ public class UserSensorService {
     return userSensorRepository.findAll();
   }
 
+  public List<UserSensors> getUserSensorsByAquariumId(Long aquariumId) {
+    return userSensorRepository.findUserSensorsByAquariumId(aquariumId);
+  }
+
   public boolean addUserSensor(Long aquariumId, int sensorTypeId) {
     try {
       var userSensor = new UserSensors();
