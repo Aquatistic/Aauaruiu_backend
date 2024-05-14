@@ -27,9 +27,13 @@ public class UserSensorControllers {
   }
 
   @GetMapping("aquarium/{aquariumId}")
-  public ResponseEntity<List<UserSensors>> getSensorsByAquariumId(@PathVariable Long aquariumId) {
-    return new ResponseEntity<>(
-        userSensorService.getUserSensorsByAquariumId(aquariumId), HttpStatus.OK);
+  public ResponseEntity<?> getSensorsByAquariumId(@PathVariable Long aquariumId) {
+    try {
+      return new ResponseEntity<>(
+          userSensorService.getUserSensorsByAquariumId(aquariumId), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
   }
 
   @PostMapping("add")

@@ -27,14 +27,14 @@ public class UserSensorService {
   }
 
   public List<UserSensors> getUserSensorsByAquariumId(Long aquariumId) {
+    aquariumRepository.findById(aquariumId).orElseThrow();
     return userSensorRepository.findUserSensorsByAquariumId(aquariumId);
   }
 
   public boolean addUserSensor(Long aquariumId, int sensorTypeId) {
     try {
-      var userSensor = new UserSensors();
-      userSensor.setAquarium(aquariumRepository.findById(aquariumId).get());
-      userSensor.setSensorType(sensorTypeRepository.findById(sensorTypeId).get());
+      var userSensor = new UserSensors(aquariumRepository.findById(aquariumId).get(),
+          sensorTypeRepository.findById(sensorTypeId).get());
       userSensorRepository.save(userSensor);
     } catch (Exception e) {
       return false;
