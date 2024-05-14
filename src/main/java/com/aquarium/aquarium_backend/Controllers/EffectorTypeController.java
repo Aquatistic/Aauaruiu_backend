@@ -15,12 +15,14 @@ public class EffectorTypeController {
   private final EffectorTypeService effectorTypeService;
 
   public EffectorTypeController(EffectorTypeService effectorTypeService) {
+
     this.effectorTypeService = effectorTypeService;
   }
 
   @GetMapping
   public ResponseEntity<List<EffectorType>> getAllEffectorTypes() {
     List<EffectorType> allEffectorList = effectorTypeService.getAllEffectorTypes();
+
     return new ResponseEntity<>(allEffectorList, HttpStatus.OK);
   }
 }

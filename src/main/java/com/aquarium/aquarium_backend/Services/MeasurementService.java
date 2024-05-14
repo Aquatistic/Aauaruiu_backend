@@ -37,4 +37,8 @@ public class MeasurementService {
     }
     return true;
   }
+
+  public List<Measurement> getMeasurementsByUserSensorId(Long userSensorId) {
+    return measurementRepository.findMeasurementsByUserSensorId(userSensorId);
+  }
 }

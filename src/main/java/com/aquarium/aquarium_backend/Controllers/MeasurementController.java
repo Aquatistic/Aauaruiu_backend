@@ -7,6 +7,7 @@ import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,13 @@ public class MeasurementController {
   public ResponseEntity<List<Measurement>> getAllMeasurements() {
     List<Measurement> allMeasurements = measurementService.getAllMeasurements();
     return new ResponseEntity<>(allMeasurements, HttpStatus.OK);
+  }
+
+  @GetMapping("userSensor/{userSensorId}")
+  public ResponseEntity<List<Measurement>> getmeasurementByUserSensorId(
+      @PathVariable Long userSensorId) {
+    return new ResponseEntity<>(
+        measurementService.getMeasurementsByUserSensorId(userSensorId), HttpStatus.OK);
   }
 
   @PostMapping("add")

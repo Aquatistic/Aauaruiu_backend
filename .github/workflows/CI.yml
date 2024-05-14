@@ -9,6 +9,7 @@ on:
 jobs:
   formatting:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
       - uses: axel-op/googlejavaformat-action@v3.6.0
