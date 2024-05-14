@@ -29,7 +29,8 @@ public class MeasurementController {
   }
 
   @GetMapping("userSensor/{userSensorId}")
-  public ResponseEntity<List<Measurement>> getmeasurementByUserSensorId(@PathVariable Long userSensorId) {
+  public ResponseEntity<List<Measurement>> getmeasurementByUserSensorId(
+      @PathVariable Long userSensorId) {
     return new ResponseEntity<>(
         measurementService.getMeasurementsByUserSensorId(userSensorId), HttpStatus.OK);
   }
