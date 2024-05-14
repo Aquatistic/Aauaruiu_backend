@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class EffectorTypeController {
   private final EffectorTypeService effectorTypeService;
 
+
+
+
   public EffectorTypeController(EffectorTypeService effectorTypeService) {
 
     this.effectorTypeService = effectorTypeService;
@@ -25,4 +28,5 @@ public class EffectorTypeController {
 
     return new ResponseEntity<>(allEffectorList, HttpStatus.OK);
   }
+
 }
