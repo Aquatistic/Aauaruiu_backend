@@ -19,10 +19,6 @@ public class EffectorTypeController {
     this.effectorTypeService = effectorTypeService;
   }
 
-
-
-
-
   @GetMapping
   public ResponseEntity<List<EffectorType>> getAllEffectorTypes() {
     List<EffectorType> allEffectorList = effectorTypeService.getAllEffectorTypes();
