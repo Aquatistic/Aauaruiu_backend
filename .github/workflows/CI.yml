@@ -10,10 +10,13 @@ jobs:
   formatting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: axel-op/googlejavaformat-action@v3.6.0
+      - if: github.event_name != 'pull_request'
+        uses: actions/checkout@v2
+      - if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
         with:
-          args: "--skip-sorting-imports --replace"
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: axel-op/googlejavaformat-action@v3
   build:
     runs-on: ubuntu-latest
     steps:
