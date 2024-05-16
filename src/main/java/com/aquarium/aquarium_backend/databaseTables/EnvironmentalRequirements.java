@@ -8,29 +8,17 @@ import java.util.Objects;
 public class EnvironmentalRequirements {
   private @Id @GeneratedValue int environmentalRequirementsId;
 
-  @OneToMany
-  @JoinColumn(name = "fishTypeId")
-  private List<FishType> fishType;
-
   private String name;
   private String unit;
   private float value;
 
-  public EnvironmentalRequirements() {}
+  public EnvironmentalRequirements() {
+  }
 
-  public EnvironmentalRequirements(List<FishType> fishType, String name, String unit, float value) {
-    this.fishType = fishType;
+  public EnvironmentalRequirements(String name, String unit, float value) {
     this.name = name;
     this.unit = unit;
     this.value = value;
-  }
-
-  public List<FishType> getFishType() {
-    return fishType;
-  }
-
-  public void setFishType(List<FishType> fishType) {
-    this.fishType = fishType;
   }
 
   public String getName() {
@@ -63,12 +51,14 @@ public class EnvironmentalRequirements {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
     EnvironmentalRequirements that = (EnvironmentalRequirements) o;
     return getEnvironmentalRequirementsId() == that.getEnvironmentalRequirementsId()
         && Float.compare(getValue(), that.getValue()) == 0
-        && Objects.equals(getFishType(), that.getFishType())
+        // && Objects.equals(getFishType(), that.getFishType())
         && Objects.equals(getName(), that.getName())
         && Objects.equals(getUnit(), that.getUnit());
   }
@@ -76,6 +66,6 @@ public class EnvironmentalRequirements {
   @Override
   public int hashCode() {
     return Objects.hash(
-        getEnvironmentalRequirementsId(), getFishType(), getName(), getUnit(), getValue());
+        getEnvironmentalRequirementsId(), getName(), getUnit(), getValue());
   }
 }
