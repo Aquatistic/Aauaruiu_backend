@@ -1,5 +1,6 @@
 package com.aquarium.aquarium_backend.Controllers;
 
+import com.aquarium.aquarium_backend.Helpers.ControllStruct;
 import com.aquarium.aquarium_backend.Services.AquariumService;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
 
@@ -47,15 +48,5 @@ public class AquariumController {
     } catch (Exception e) {
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
-  }
-
-  @GetMapping(path = "/connect/{aquariumId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-  public ResponseEntity<SseEmitter> connectAquarium(@PathVariable Long aquariumId) {
-    SseEmitter emitter = aquariumService.connectAquarium(aquariumId);
-    if (emitter == null) {
-      return new ResponseEntity<>(null,
-          HttpStatus.BAD_REQUEST);
-    }
-    return new ResponseEntity<>(emitter, HttpStatus.OK);
   }
 }
