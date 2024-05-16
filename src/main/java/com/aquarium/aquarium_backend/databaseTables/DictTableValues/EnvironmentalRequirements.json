@@ -1,10 +1,20 @@
 [
   {
     "name": "PH",
-    "unit": ""
+    "unit": "",
+    "value": 4,
+    "fish": [
+      "Guppy",
+      "Molly"
+    ]
   },
   {
     "name": "Temperature",
-    "unit": "°C"
+    "unit": "°C",
+    "value": 25,
+    "fish": [
+      "Guppy",
+      "Molly"
+    ]
   }
 ]
