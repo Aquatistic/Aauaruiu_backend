@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ControllStruct {
     private Long AquariumId;
-    private Long SensorId;
+    private Long EffectorId;
     private float value;
 }
