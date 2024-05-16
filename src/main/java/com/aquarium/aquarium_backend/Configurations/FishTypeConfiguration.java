@@ -16,9 +16,9 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.parser.JSONParser;
 
 @Configuration
-public class FistTypeConfiguration {
+public class FishTypeConfiguration {
     @Bean
-    CommandLineRunner effectorCommandLineRunner(FishTypeRepository repository) {
+    CommandLineRunner fishCommandLineRunner(FishTypeRepository repository) {
         JSONParser jsonParser = new JSONParser(1);
         try {
             JSONArray effectorTypes = (JSONArray) jsonParser.parse(
@@ -38,7 +38,7 @@ public class FistTypeConfiguration {
                         });
             };
         } catch (Exception e) {
-            throw new RuntimeException("Failed to read fishType.json");
+            throw new RuntimeException("Failed to read fishType.json " + e.getMessage());
         }
     }
 }
