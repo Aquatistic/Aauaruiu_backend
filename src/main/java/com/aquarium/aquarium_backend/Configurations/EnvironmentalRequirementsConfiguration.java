@@ -1,6 +1,7 @@
 package com.aquarium.aquarium_backend.Configurations;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.json.JSONObject;
@@ -32,8 +33,13 @@ public class EnvironmentalRequirementsConfiguration {
                                 String name = environmentalRequirementJson.getString("name");
                                 String unit = environmentalRequirementJson.getString("unit");
                                 Double value = environmentalRequirementJson.getDouble("value");
+                                ArrayList<String> fishNames = new ArrayList<String>();
+                                var fishNamesJson = environmentalRequirementJson.getJSONArray("fish");
+                                for (int i = 0; i < fishNamesJson.length(); i++) {
+                                    fishNames.add(fishNamesJson.getString(i));
+                                }
                                 EnvironmentalRequirements newEnvironmentalRequirements = new EnvironmentalRequirements(
-                                        name, unit, value.floatValue());
+                                        name, unit, value.floatValue(), fishNames);
                                 repository.save(newEnvironmentalRequirements);
                             } catch (Exception e) {
                                 e.printStackTrace();
