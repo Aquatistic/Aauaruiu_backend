@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.aquarium.aquarium_backend.databaseTables.EnvironmentalRequirements;
 
 @Repository
-public interface EnvironmentalRequirementsRepository extends JpaRepository<EnvironmentalRequirements, Integer> {
-}
+public interface EnvironmentalRequirementsRepository
+    extends JpaRepository<EnvironmentalRequirements, Integer> {}

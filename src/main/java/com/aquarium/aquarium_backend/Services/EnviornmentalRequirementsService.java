@@ -9,13 +9,14 @@ import com.aquarium.aquarium_backend.databaseTables.EnvironmentalRequirements;
 
 @Service
 public class EnviornmentalRequirementsService {
-    private final EnvironmentalRequirementsRepository environmentalRequirementsRepository;
+  private final EnvironmentalRequirementsRepository environmentalRequirementsRepository;
 
-    public EnviornmentalRequirementsService(EnvironmentalRequirementsRepository environmentalRequirementsRepository) {
-        this.environmentalRequirementsRepository = environmentalRequirementsRepository;
-    }
+  public EnviornmentalRequirementsService(
+      EnvironmentalRequirementsRepository environmentalRequirementsRepository) {
+    this.environmentalRequirementsRepository = environmentalRequirementsRepository;
+  }
 
-    public List<EnvironmentalRequirements> getAllRequirements() {
-        return environmentalRequirementsRepository.findAll();
-    }
+  public List<EnvironmentalRequirements> getAllRequirements() {
+    return environmentalRequirementsRepository.findAll();
+  }
 }

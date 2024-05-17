@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.aquarium.aquarium_backend.databaseTables.FishType;
 
 @Repository
-public interface FishTypeRepository extends JpaRepository<FishType, Integer> {
-}
+public interface FishTypeRepository extends JpaRepository<FishType, Integer> {}

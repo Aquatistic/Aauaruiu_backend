@@ -17,33 +17,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RestController
 @RequestMapping(path = "api/v1/fish")
 public class FishController {
-    private final FishService fishService;
+  private final FishService fishService;
 
-    public FishController(FishService fishService) {
-        this.fishService = fishService;
-    }
+  public FishController(FishService fishService) {
+    this.fishService = fishService;
+  }
 
-    @GetMapping
-    public ResponseEntity<List<Fish>> getAllFish() {
-        return new ResponseEntity<List<Fish>>(fishService.getAllFish(), HttpStatus.OK);
-    }
+  @GetMapping
+  public ResponseEntity<List<Fish>> getAllFish() {
+    return new ResponseEntity<List<Fish>>(fishService.getAllFish(), HttpStatus.OK);
+  }
 
-    @GetMapping("aquarium/{aquariumId}")
-    public ResponseEntity<List<Fish>> getFishInAquarium(@PathVariable Long aquariumId) {
-        try {
-            return new ResponseEntity<>(fishService.getFishInAquarium(aquariumId), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+  @GetMapping("aquarium/{aquariumId}")
+  public ResponseEntity<List<Fish>> getFishInAquarium(@PathVariable Long aquariumId) {
+    try {
+      return new ResponseEntity<>(fishService.getFishInAquarium(aquariumId), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+  }
 
-    @PostMapping("add")
-    public ResponseEntity<?> addFish(Long aquariumId, int fishTypeId, int count) {
-        try {
-            fishService.addFish(aquariumId, fishTypeId, count);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+  @PostMapping("add")
+  public ResponseEntity<?> addFish(Long aquariumId, int fishTypeId, int count) {
+    try {
+      fishService.addFish(aquariumId, fishTypeId, count);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+    return new ResponseEntity<>(HttpStatus.CREATED);
+  }
 }

@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping(path = "api/v1/evniornmentalRequirements")
 public class EnviornmentalRequirementsController {
-    private final EnviornmentalRequirementsService enviornmentalRequirementsService;
+  private final EnviornmentalRequirementsService enviornmentalRequirementsService;
 
-    public EnviornmentalRequirementsController(EnviornmentalRequirementsService enviornmentalRequirementsService) {
-        this.enviornmentalRequirementsService = enviornmentalRequirementsService;
-    }
+  public EnviornmentalRequirementsController(
+      EnviornmentalRequirementsService enviornmentalRequirementsService) {
+    this.enviornmentalRequirementsService = enviornmentalRequirementsService;
+  }
 
-    @GetMapping
-    public List<EnvironmentalRequirements> getAllRequirements() {
-        return enviornmentalRequirementsService.getAllRequirements();
-    }
+  @GetMapping
+  public List<EnvironmentalRequirements> getAllRequirements() {
+    return enviornmentalRequirementsService.getAllRequirements();
+  }
 }

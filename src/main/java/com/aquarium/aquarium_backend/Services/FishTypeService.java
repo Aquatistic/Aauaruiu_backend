@@ -9,13 +9,13 @@ import com.aquarium.aquarium_backend.databaseTables.FishType;
 
 @Service
 public class FishTypeService {
-    private final FishTypeRepository fishTypeRepository;
+  private final FishTypeRepository fishTypeRepository;
 
-    public FishTypeService(FishTypeRepository fishTypeRepository) {
-        this.fishTypeRepository = fishTypeRepository;
-    }
+  public FishTypeService(FishTypeRepository fishTypeRepository) {
+    this.fishTypeRepository = fishTypeRepository;
+  }
 
-    public List<FishType> getAllFishTypes() {
-        return fishTypeRepository.findAll();
-    }
+  public List<FishType> getAllFishTypes() {
+    return fishTypeRepository.findAll();
+  }
 }

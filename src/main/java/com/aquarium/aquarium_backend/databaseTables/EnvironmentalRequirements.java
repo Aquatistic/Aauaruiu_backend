@@ -13,8 +13,7 @@ public class EnvironmentalRequirements {
   private float value;
   private List<String> fishNames;
 
-  public EnvironmentalRequirements() {
-  }
+  public EnvironmentalRequirements() {}
 
   public EnvironmentalRequirements(String name, String unit, float value, List<String> fishNames) {
     this.name = name;
@@ -61,10 +60,8 @@ public class EnvironmentalRequirements {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     EnvironmentalRequirements that = (EnvironmentalRequirements) o;
     return getEnvironmentalRequirementsId() == that.getEnvironmentalRequirementsId()
         && Float.compare(getValue(), that.getValue()) == 0
@@ -75,7 +72,6 @@ public class EnvironmentalRequirements {
 
   @Override
   public int hashCode() {
-    return Objects.hash(
-        getEnvironmentalRequirementsId(), getName(), getUnit(), getValue());
+    return Objects.hash(getEnvironmentalRequirementsId(), getName(), getUnit(), getValue());
   }
 }
