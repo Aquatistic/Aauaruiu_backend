@@ -67,7 +67,6 @@ public class UserEffectorService {
         .orElseThrow(() -> new Exception("Effector doesn't exist"));
     var aquarium = aquariumRepository.findById(controllStruct.getAquariumId())
         .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
-    System.out.println("aaaaaaaaaaaaaa" + emitters.values().toString());
     SseEmitter emitter = emitters.get(aquarium);
     emitter.send(controllStruct);
   }
