@@ -25,7 +25,7 @@ public class FishController {
 
     @GetMapping
     public ResponseEntity<List<Fish>> getAllFish() {
-        return new ResponseEntity<>(fishService.getAllFish(), HttpStatus.OK);
+        return new ResponseEntity<List<Fish>>(fishService.getAllFish(), HttpStatus.OK);
     }
 
     @GetMapping("aquarium/{aquariumId}")
