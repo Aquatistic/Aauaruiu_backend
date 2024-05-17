@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping(path = "api/v1/fishType")
 public class FishTypeController {
-    private final FishTypeService fishTypeService;
+  private final FishTypeService fishTypeService;
 
-    public FishTypeController(FishTypeService fishTypeService) {
-        this.fishTypeService = fishTypeService;
-    }
+  public FishTypeController(FishTypeService fishTypeService) {
+    this.fishTypeService = fishTypeService;
+  }
 
-    @GetMapping
-    public List<FishType> getMethodName() {
-        return fishTypeService.getAllFishTypes();
-    }
-
+  @GetMapping
+  public List<FishType> getMethodName() {
+    return fishTypeService.getAllFishTypes();
+  }
 }
