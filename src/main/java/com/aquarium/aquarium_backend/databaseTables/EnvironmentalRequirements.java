@@ -11,14 +11,24 @@ public class EnvironmentalRequirements {
   private String name;
   private String unit;
   private float value;
+  private List<String> fishNames;
 
   public EnvironmentalRequirements() {
   }
 
-  public EnvironmentalRequirements(String name, String unit, float value) {
+  public EnvironmentalRequirements(String name, String unit, float value, List<String> fishNames) {
     this.name = name;
     this.unit = unit;
     this.value = value;
+    this.fishNames = fishNames;
+  }
+
+  public List<String> getFishNames() {
+    return fishNames;
+  }
+
+  public void setFishNames(List<String> fishNames) {
+    this.fishNames = fishNames;
   }
 
   public String getName() {
