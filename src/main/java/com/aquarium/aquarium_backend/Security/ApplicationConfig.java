@@ -1,4 +1,4 @@
-package com.aquarium.aquarium_backend.JwtConfig;
+package com.aquarium.aquarium_backend.Security;
 
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import org.springframework.context.annotation.Bean;
