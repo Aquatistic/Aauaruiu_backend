@@ -20,6 +20,7 @@ public class JwtService {
 
   @Value("${jwt.secretKey}")
   private String secretKey;
+
   @Value("${jwt.expirationTime}")
   private Long expirationTime;
 
@@ -30,19 +31,19 @@ public class JwtService {
   public Date extractExpiration(String token) {
     return extractClaims(token, Claims::getExpiration);
   }
+
   public String generateToken(UserDetails userDetails) {
     return generateToken(new HashMap<>(), userDetails);
   }
 
   public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-    return Jwts
-            .builder()
-            .setClaims(extraClaims)
-            .setSubject(userDetails.getUsername())
-            .setIssuedAt(new Date(System.currentTimeMillis()))
-            .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-            .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-            .compact();
+    return Jwts.builder()
+        .setClaims(extraClaims)
+        .setSubject(userDetails.getUsername())
+        .setIssuedAt(new Date(System.currentTimeMillis()))
+        .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
+        .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+        .compact();
   }
 
   public boolean isTokenValid(String token, UserDetails userDetails) {
@@ -56,16 +57,17 @@ public class JwtService {
 
   private Claims extractAllClaims(String token) {
     return Jwts.parserBuilder()
-            .setSigningKey(getSignInKey())
-            .build()
-            .parseClaimsJws(token)
-            .getBody();
+        .setSigningKey(getSignInKey())
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
   }
 
   public <T> T extractClaims(String token, Function<Claims, T> claimsResolver) {
     final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
   }
+
   private Key getSignInKey() {
     byte[] keyBytes = Decoders.BASE64.decode(secretKey);
     return Keys.hmacShaKeyFor(keyBytes);

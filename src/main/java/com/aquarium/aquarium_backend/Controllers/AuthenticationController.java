@@ -11,28 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.rmi.registry.Registry;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
-    private final AuthenticationService authenticationService;
+  private final AuthenticationService authenticationService;
 
-    public AuthenticationController(AuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
-    }
+  public AuthenticationController(AuthenticationService authenticationService) {
+    this.authenticationService = authenticationService;
+  }
 
-    @PostMapping("authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request) {
-        return new ResponseEntity<>(authenticationService.authenticate(request), HttpStatus.OK);
-    }
+  @PostMapping("authenticate")
+  public ResponseEntity<AuthenticationResponse> authenticate(
+      @RequestBody AuthenticationRequest request) {
+    return new ResponseEntity<>(authenticationService.authenticate(request), HttpStatus.OK);
+  }
 
-    @PostMapping("register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody ReqisterRequest request) {
-        return new ResponseEntity<>(authenticationService.register(request), HttpStatus.OK);
-    }
-
+  @PostMapping("register")
+  public ResponseEntity<AuthenticationResponse> register(@RequestBody ReqisterRequest request) {
+    return new ResponseEntity<>(authenticationService.register(request), HttpStatus.OK);
+  }
 }
