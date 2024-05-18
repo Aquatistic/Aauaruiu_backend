@@ -20,7 +20,7 @@ public class FishTypeController {
   }
 
   @GetMapping
-  public List<FishType> getMethodName() {
+  public List<FishType> getAllFishTypes() {
     return fishTypeService.getAllFishTypes();
   }
 }
