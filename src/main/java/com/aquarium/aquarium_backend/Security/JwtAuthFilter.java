@@ -1,7 +1,6 @@
-package com.aquarium.aquarium_backend.JwtConfig;
+package com.aquarium.aquarium_backend.Security;
 
 import com.aquarium.aquarium_backend.Services.JwtService;
-import com.aquarium.aquarium_backend.databaseTables.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
