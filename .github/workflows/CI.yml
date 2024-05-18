@@ -44,7 +44,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -Dspring.profiles.active=test-containers -B verify sonar:sonar -Dsonar.projectKey=${{ secrets.SONARQUBE_PROJECT_KEY }} -Dsonar.projectName= ${{ secrets.SONARQUBE_PROJECT_NAME}}
+        run: mvn -Dspring.profiles.active=remote-test-containers -B verify sonar:sonar -Dsonar.projectKey=${{ secrets.SONARQUBE_PROJECT_KEY }} -Dsonar.projectName= ${{ secrets.SONARQUBE_PROJECT_NAME}}
   unitTest:
     runs-on: ubuntu-latest
     needs: build
