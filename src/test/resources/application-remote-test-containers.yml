@@ -6,3 +6,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+jwt:
+  secretKey: ${SECRET_KEY}
+  expirationTime: ${EXPIRATION_TIME}
