@@ -23,10 +23,13 @@ public class JwtService {
   @Value("${jwt.expirationTime}")
   private Long expirationTime;
 
-  public String extractUserEmail(String token) {
+  public String extractUsername(String token) {
     return extractClaims(token, Claims::getSubject);
   }
 
+  public Date extractExpiration(String token) {
+    return extractClaims(token, Claims::getExpiration);
+  }
   public String generateToken(UserDetails userDetails) {
     return generateToken(new HashMap<>(), userDetails);
   }
@@ -40,6 +43,15 @@ public class JwtService {
             .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
             .signWith(getSignInKey(), SignatureAlgorithm.HS256)
             .compact();
+  }
+
+  public boolean isTokenValid(String token, UserDetails userDetails) {
+    final String username = extractUsername(token);
+    return (username.equals(userDetails.getUsername())) && !isTokenExpired(token, userDetails);
+  }
+
+  public boolean isTokenExpired(String token, UserDetails userDetails) {
+    return extractExpiration(token).before(new Date(System.currentTimeMillis()));
   }
 
   private Claims extractAllClaims(String token) {
