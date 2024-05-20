@@ -8,29 +8,26 @@ import java.util.Objects;
 public class EnvironmentalRequirements {
   private @Id @GeneratedValue int environmentalRequirementsId;
 
-  @OneToMany
-  @JoinColumn(name = "fishTypeId")
-  private List<FishType> fishType;
-
   private String name;
   private String unit;
   private float value;
+  private List<String> fishNames;
 
   public EnvironmentalRequirements() {}
 
-  public EnvironmentalRequirements(List<FishType> fishType, String name, String unit, float value) {
-    this.fishType = fishType;
+  public EnvironmentalRequirements(String name, String unit, float value, List<String> fishNames) {
     this.name = name;
     this.unit = unit;
     this.value = value;
+    this.fishNames = fishNames;
   }
 
-  public List<FishType> getFishType() {
-    return fishType;
+  public List<String> getFishNames() {
+    return fishNames;
   }
 
-  public void setFishType(List<FishType> fishType) {
-    this.fishType = fishType;
+  public void setFishNames(List<String> fishNames) {
+    this.fishNames = fishNames;
   }
 
   public String getName() {
@@ -68,14 +65,13 @@ public class EnvironmentalRequirements {
     EnvironmentalRequirements that = (EnvironmentalRequirements) o;
     return getEnvironmentalRequirementsId() == that.getEnvironmentalRequirementsId()
         && Float.compare(getValue(), that.getValue()) == 0
-        && Objects.equals(getFishType(), that.getFishType())
+        // && Objects.equals(getFishType(), that.getFishType())
         && Objects.equals(getName(), that.getName())
         && Objects.equals(getUnit(), that.getUnit());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(
-        getEnvironmentalRequirementsId(), getFishType(), getName(), getUnit(), getValue());
+    return Objects.hash(getEnvironmentalRequirementsId(), getName(), getUnit(), getValue());
   }
 }
