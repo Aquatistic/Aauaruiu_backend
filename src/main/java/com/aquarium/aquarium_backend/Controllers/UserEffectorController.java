@@ -29,7 +29,8 @@ public class UserEffectorController {
   @GetMapping("aquariums/{aquariumId}")
   public ResponseEntity<List<UserEffectors>> getEffectorsByAquariumId(
       @PathVariable Long aquariumId) {
-    List<UserEffectors> userEffectors = userEffectorService.getUserEffectorsByAquariumId(aquariumId);
+    List<UserEffectors> userEffectors =
+        userEffectorService.getUserEffectorsByAquariumId(aquariumId);
     return new ResponseEntity<>(userEffectors, HttpStatus.OK);
   }
 
@@ -40,8 +41,9 @@ public class UserEffectorController {
       int effectorTypeId = Integer.valueOf(payload.get("effectorTypeId").toString());
       float effectorValue = Float.valueOf(payload.get("effectorValue").toString());
       String effectorControlType = payload.get("effectorControlType").toString();
-      UserEffectors createdUserEffector = userEffectorService.postEffector(
-          aquariumId, effectorTypeId, effectorValue, effectorControlType);
+      UserEffectors createdUserEffector =
+          userEffectorService.postEffector(
+              aquariumId, effectorTypeId, effectorValue, effectorControlType);
       return new ResponseEntity<>(createdUserEffector, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -52,8 +54,7 @@ public class UserEffectorController {
   public ResponseEntity<SseEmitter> connectAquarium(@PathVariable Long aquariumId) {
     SseEmitter emitter = userEffectorService.connectAquarium(aquariumId);
     if (emitter == null) {
-      return new ResponseEntity<>(null,
-          HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
     return new ResponseEntity<>(emitter, HttpStatus.OK);
   }

@@ -1,18 +1,14 @@
 package com.aquarium.aquarium_backend.Services;
 
-import com.aquarium.aquarium_backend.Helpers.ControllStruct;
 import com.aquarium.aquarium_backend.Repositories.AquariumRepository;
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
 import com.aquarium.aquarium_backend.databaseTables.User;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Service
 public class AquariumService {
@@ -38,7 +34,8 @@ public class AquariumService {
 
   public Aquarium addAquarium(String aquariumName, float aquariumCapacity, Long userId)
       throws Exception {
-    User user = userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
+    User user =
+        userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
     Aquarium createdAquarium = new Aquarium(aquariumName, aquariumCapacity, user);
     return aquariumRepository.save(createdAquarium);
   }

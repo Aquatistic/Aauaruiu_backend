@@ -41,14 +41,17 @@ public class UserEffectorService {
   public UserEffectors postEffector(
       Long aquariumId, int effectorTypeId, float effectorValue, String effectorControlType)
       throws Exception {
-    Aquarium aquarium = aquariumRepository
-        .findById(aquariumId)
-        .orElseThrow(() -> new Exception("Aquarium does not exist"));
-    EffectorType effectorType = effectorTypeRepository
-        .findById(effectorTypeId)
-        .orElseThrow(() -> new Exception("Effector Type does not exist"));
+    Aquarium aquarium =
+        aquariumRepository
+            .findById(aquariumId)
+            .orElseThrow(() -> new Exception("Aquarium does not exist"));
+    EffectorType effectorType =
+        effectorTypeRepository
+            .findById(effectorTypeId)
+            .orElseThrow(() -> new Exception("Effector Type does not exist"));
 
-    UserEffectors userEffectors = new UserEffectors(effectorType, aquarium, effectorValue, effectorControlType);
+    UserEffectors userEffectors =
+        new UserEffectors(effectorType, aquarium, effectorValue, effectorControlType);
     return userEffectorRepository.save(userEffectors);
   }
 
@@ -63,10 +66,13 @@ public class UserEffectorService {
   }
 
   public void updateAquarium(ControllStruct controllStruct) throws Exception {
-    userEffectorRepository.findById(controllStruct.getEffectorId())
+    userEffectorRepository
+        .findById(controllStruct.getEffectorId())
         .orElseThrow(() -> new Exception("Effector doesn't exist"));
-    var aquarium = aquariumRepository.findById(controllStruct.getAquariumId())
-        .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
+    var aquarium =
+        aquariumRepository
+            .findById(controllStruct.getAquariumId())
+            .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
     SseEmitter emitter = emitters.get(aquarium);
     emitter.send(controllStruct);
   }
