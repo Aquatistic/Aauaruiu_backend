@@ -57,7 +57,7 @@ public class UserEffectorService {
     if (aquarium == null) {
       return null;
     }
-    SseEmitter emitter = new SseEmitter();
+    SseEmitter emitter = new SseEmitter(-1L);
     emitters.put(aquarium, emitter);
     return emitter;
   }
