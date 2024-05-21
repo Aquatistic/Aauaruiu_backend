@@ -1,5 +1,6 @@
 package com.aquarium.aquarium_backend.Services;
 
+import com.aquarium.aquarium_backend.databaseTables.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,11 +33,13 @@ public class JwtService {
     return extractClaims(token, Claims::getExpiration);
   }
 
-  public String generateToken(UserDetails userDetails) {
-    return generateToken(new HashMap<>(), userDetails);
+  public String generateToken(User userDetails) {
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("userId", userDetails.getUserId());
+    return generateToken(claims, userDetails);
   }
 
-  public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+  public String generateToken(Map<String, Object> extraClaims, User userDetails) {
     return Jwts.builder()
         .setClaims(extraClaims)
         .setSubject(userDetails.getUsername())
@@ -63,6 +66,9 @@ public class JwtService {
         .getBody();
   }
 
+  public String extractUserId(String token) {
+    return extractClaims(token, claims -> claims.get("userId", String.class));
+  }
   public <T> T extractClaims(String token, Function<Claims, T> claimsResolver) {
     final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
