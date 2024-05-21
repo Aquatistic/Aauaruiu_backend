@@ -28,10 +28,14 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
             auth ->
-                    auth.requestMatchers("/api/v1/auth/**")
-                            .permitAll()
-                            .requestMatchers("/api/v1/measurements/add").permitAll()
-                            .requestMatchers("/api/v1/userEffector/connect").permitAll().anyRequest().authenticated())
+                auth.requestMatchers("/api/v1/auth/**")
+                    .permitAll()
+                    .requestMatchers("/api/v1/measurements/add")
+                    .permitAll()
+                    .requestMatchers("/api/v1/userEffector/connect")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
         .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
