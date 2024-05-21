@@ -2,7 +2,7 @@ package com.aquarium.aquarium_backend.Controllers;
 
 import com.aquarium.aquarium_backend.Security.AuthenticationRequest;
 import com.aquarium.aquarium_backend.Security.AuthenticationResponse;
-import com.aquarium.aquarium_backend.Security.ReqisterRequest;
+import com.aquarium.aquarium_backend.Security.RegisterRequest;
 import com.aquarium.aquarium_backend.Services.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class AuthenticationController {
   }
 
   @PostMapping("register")
-  public ResponseEntity<AuthenticationResponse> register(@RequestBody ReqisterRequest request) {
+  public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
     return new ResponseEntity<>(authenticationService.register(request), HttpStatus.OK);
   }
 }

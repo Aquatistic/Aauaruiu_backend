@@ -3,7 +3,7 @@ package com.aquarium.aquarium_backend.Services;
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.Security.AuthenticationRequest;
 import com.aquarium.aquarium_backend.Security.AuthenticationResponse;
-import com.aquarium.aquarium_backend.Security.ReqisterRequest;
+import com.aquarium.aquarium_backend.Security.RegisterRequest;
 import com.aquarium.aquarium_backend.databaseTables.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,7 +40,7 @@ public class AuthenticationService {
     return new AuthenticationResponse(jwtToken);
   }
 
-  public AuthenticationResponse register(ReqisterRequest request) {
+  public AuthenticationResponse register(RegisterRequest request) {
     User user =
         new User(
             request.getUsername(),
