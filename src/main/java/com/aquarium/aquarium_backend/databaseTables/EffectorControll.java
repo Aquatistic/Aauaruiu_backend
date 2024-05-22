@@ -1,6 +1,7 @@
 package com.aquarium.aquarium_backend.databaseTables;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,6 +30,24 @@ public class EffectorControll {
         this.userEffector = userEffector;
         this.controllActivationMoment = controllActivationMoment;
         this.effectorValue = effectorValue;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.effectorControllId, this.userEffector, this.controllActivationMoment,
+                this.effectorValue);
+    }
+
+    public boolean equals(Object comparedObject) {
+        if (this == comparedObject)
+            return true;
+        if (comparedObject == null || comparedObject.getClass() != EffectorControll.class)
+            return false;
+        var comparedEffectorControll = (EffectorControll) comparedObject;
+        return effectorControllId == comparedEffectorControll.effectorControllId
+                && Objects.equals(userEffector, comparedEffectorControll.userEffector)
+                && Objects.equals(controllActivationMoment, comparedEffectorControll.controllActivationMoment)
+                && effectorValue == comparedEffectorControll.effectorValue;
     }
 
     public Long getEffectorControllId() {
