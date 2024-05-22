@@ -4,7 +4,9 @@ import com.aquarium.aquarium_backend.Repositories.AquariumRepository;
 import com.aquarium.aquarium_backend.Repositories.UserRepository;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
 import com.aquarium.aquarium_backend.databaseTables.User;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +24,7 @@ public class AquariumService {
   }
 
   public List<Aquarium> getAllUsersAquariums(Long userId) throws Exception {
-    User user =
-        userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
+    userRepository.findById(userId).orElseThrow(() -> new Exception("User does not exist"));
     return aquariumRepository.findAquariumsByUserId(userId);
   }
 
