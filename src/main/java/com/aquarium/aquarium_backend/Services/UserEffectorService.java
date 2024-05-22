@@ -41,25 +41,21 @@ public class UserEffectorService {
   public UserEffectors postEffector(
       Long aquariumId, int effectorTypeId, float effectorValue, String effectorControlType)
       throws Exception {
-    Aquarium aquarium =
-        aquariumRepository
-            .findById(aquariumId)
-            .orElseThrow(() -> new Exception("Aquarium does not exist"));
-    EffectorType effectorType =
-        effectorTypeRepository
-            .findById(effectorTypeId)
-            .orElseThrow(() -> new Exception("Effector Type does not exist"));
+    Aquarium aquarium = aquariumRepository
+        .findById(aquariumId)
+        .orElseThrow(() -> new Exception("Aquarium does not exist"));
+    EffectorType effectorType = effectorTypeRepository
+        .findById(effectorTypeId)
+        .orElseThrow(() -> new Exception("Effector Type does not exist"));
 
-    UserEffectors userEffectors =
-        new UserEffectors(effectorType, aquarium, effectorValue, effectorControlType);
+    UserEffectors userEffectors = new UserEffectors(effectorType, aquarium, effectorValue, effectorControlType);
     return userEffectorRepository.save(userEffectors);
   }
 
   public SseEmitter connectAquarium(Long aquariumId) throws Exception {
-    Aquarium aquarium =
-        aquariumRepository
-            .findById(aquariumId)
-            .orElseThrow(() -> new Exception("Aquarium does not exist"));
+    Aquarium aquarium = aquariumRepository
+        .findById(aquariumId)
+        .orElseThrow(() -> new Exception("Aquarium does not exist"));
     SseEmitter emitter = new SseEmitter(-1L);
     emitters.put(aquarium, emitter);
     return emitter;
@@ -69,11 +65,11 @@ public class UserEffectorService {
     userEffectorRepository
         .findById(controllStruct.getEffectorId())
         .orElseThrow(() -> new Exception("Effector doesn't exist"));
-    var aquarium =
-        aquariumRepository
-            .findById(controllStruct.getAquariumId())
-            .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
+    var aquarium = aquariumRepository
+        .findById(controllStruct.getAquariumId())
+        .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
     SseEmitter emitter = emitters.get(aquarium);
     emitter.send(controllStruct);
+    userEffectorRepository.updateUserEffectorValue(controllStruct.getEffectorId(), controllStruct.getValue());
   }
 }
