@@ -27,15 +27,16 @@ public class SecurityConfig {
     httpSecurity
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
-            auth ->
-                auth.requestMatchers("/api/v1/auth/**")
-                    .permitAll()
-                    .requestMatchers("/api/v1/measurements/add")
-                    .permitAll()
-                    .requestMatchers("/api/v1/userEffector/connect")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated())
+            auth -> auth.requestMatchers("/api/v1/auth/**")
+                .permitAll()
+                .requestMatchers("/api/v1/measurements/add")
+                .permitAll()
+                .requestMatchers("/api/v1/userEffector/connect/**")
+                .permitAll()
+                .requestMatchers("/api/v1/userEffector/update") // TODO remove this
+                .permitAll()
+                .anyRequest()
+                .authenticated())
         .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
