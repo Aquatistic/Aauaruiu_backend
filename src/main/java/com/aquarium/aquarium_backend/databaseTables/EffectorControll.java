@@ -30,4 +30,32 @@ public class EffectorControll {
         this.controllActivationMoment = controllActivationMoment;
         this.effectorValue = effectorValue;
     }
+
+    public Long getEffectorControllId() {
+        return this.effectorControllId;
+    }
+
+    public UserEffectors getUserEffector() {
+        return this.userEffector;
+    }
+
+    public LocalDateTime getControllActivationMoment() {
+        return this.controllActivationMoment;
+    }
+
+    public float getEffectorValue() {
+        return this.effectorValue;
+    }
+
+    public void setUserEffector(UserEffectors userEffector) {
+        this.userEffector = userEffector;
+    }
+
+    public void setControllActivationMoment(LocalDateTime controllActivationMoment) {
+        this.controllActivationMoment = controllActivationMoment;
+    }
+
+    public void setEffectorValue(float effectorValue) {
+        this.effectorValue = effectorValue;
+    }
 }
