@@ -13,6 +13,7 @@ public class ControllStruct {
   private Long AquariumId;
   private Long EffectorId;
   private float value;
+
   @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime controllActivationMoment;

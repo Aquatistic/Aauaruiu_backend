@@ -15,6 +15,8 @@ public interface UserEffectorRepository extends JpaRepository<UserEffectors, Lon
 
   @Modifying
   @Transactional
-  @Query("Update UserEffectors uf set uf.effectorValue = :effectorValue where uf.userEffectorTypeId = :userEffectorId")
+  @Query(
+      "Update UserEffectors uf set uf.effectorValue = :effectorValue where uf.userEffectorTypeId ="
+          + " :userEffectorId")
   void updateUserEffectorValue(Long userEffectorId, float effectorValue);
 }
