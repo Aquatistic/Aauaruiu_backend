@@ -20,4 +20,8 @@ public class EffectorControllService {
         return effectorControllRepository.findAll();
     }
 
+    public List<EffectorControll> getEffectorControlsByEffectorId(Long effectorId) {
+        return effectorControllRepository.findControlsByUserEffectorId(effectorId);
+    }
+
 }
