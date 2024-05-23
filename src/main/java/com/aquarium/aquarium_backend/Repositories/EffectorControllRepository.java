@@ -12,4 +12,7 @@ import com.aquarium.aquarium_backend.databaseTables.EffectorControll;
 public interface EffectorControllRepository extends JpaRepository<EffectorControll, Long> {
     @Query("Select cnt from EffectorControll cnt where cnt.userEffector.userEffectorId= :effectorId")
     List<EffectorControll> findControlsByUserEffectorId(Long effectorId);
+
+    @Query("Select cnt from EffectorControll cnt where cnt.controllActivationMoment < CURRENT_DATE ORDER BY cnt.controllActivationMoment DESC FETCH NEXT 1 ROWS ONLY")
+    EffectorControll findCurrentControlsByUserEffectorId(Long effectorId);
 }

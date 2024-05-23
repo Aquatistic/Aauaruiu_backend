@@ -24,4 +24,8 @@ public class EffectorControllService {
         return effectorControllRepository.findControlsByUserEffectorId(effectorId);
     }
 
+    public EffectorControll getCurrentEffectorControlsByEffectorId(Long effectorId) {
+        return effectorControllRepository.findCurrentControlsByUserEffectorId(effectorId);
+    }
+
 }

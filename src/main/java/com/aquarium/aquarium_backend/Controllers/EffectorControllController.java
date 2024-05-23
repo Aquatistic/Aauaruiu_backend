@@ -32,4 +32,10 @@ public class EffectorControllController {
         return new ResponseEntity<>(effectorControllService.getEffectorControlsByEffectorId(effectorId), HttpStatus.OK);
     }
 
+    @GetMapping("/current/{effectorId}")
+    public ResponseEntity<EffectorControll> getCurrentEffectorControls(@PathVariable Long effectorId) {
+        return new ResponseEntity<>(effectorControllService.getCurrentEffectorControlsByEffectorId(effectorId),
+                HttpStatus.OK);
+    }
+
 }
