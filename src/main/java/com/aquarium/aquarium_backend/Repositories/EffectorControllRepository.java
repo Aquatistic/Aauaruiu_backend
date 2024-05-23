@@ -15,4 +15,7 @@ public interface EffectorControllRepository extends JpaRepository<EffectorContro
 
     @Query("Select cnt from EffectorControll cnt where cnt.controllActivationMoment < LOCALTIMESTAMP AND cnt.userEffector.userEffectorTypeId= :effectorId ORDER BY cnt.controllActivationMoment DESC FETCH NEXT 1 ROWS ONLY")
     EffectorControll findCurrentControlsByUserEffectorId(Long effectorId);
+
+    @Query("Select cnt from EffectorControll cnt where cnt.controllActivationMoment > LOCALTIMESTAMP AND EXTRACT(day from cnt.controllActivationMoment) < EXTRACT(day from LOCALTIMESTAMP) + :daysInFuture AND cnt.userEffector.userEffectorTypeId= :effectorId")
+    List<EffectorControll> findFutureControlsByUserEffectorId(Long effectorId, int daysInFuture);
 }

@@ -38,4 +38,12 @@ public class EffectorControllController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/future/{effectorId}/{daysInFuture}")
+    public ResponseEntity<List<EffectorControll>> getFutureEffectorControls(@PathVariable Long effectorId,
+            @PathVariable int daysInFuture) {
+        return new ResponseEntity<>(
+                effectorControllService.getFutureEffectorControlsByEffectorId(effectorId, daysInFuture),
+                HttpStatus.OK);
+    }
+
 }

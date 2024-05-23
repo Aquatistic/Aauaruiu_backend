@@ -28,4 +28,8 @@ public class EffectorControllService {
         return effectorControllRepository.findCurrentControlsByUserEffectorId(effectorId);
     }
 
+    public List<EffectorControll> getFutureEffectorControlsByEffectorId(Long effectorId, int daysInFuture) {
+        return effectorControllRepository.findFutureControlsByUserEffectorId(effectorId, daysInFuture);
+    }
+
 }
