@@ -14,7 +14,7 @@ public class EffectorControll {
     private @Id @GeneratedValue Long effectorControllId;
 
     @ManyToOne
-    @JoinColumn(name = "userEffectorId")
+    @JoinColumn(name = "userEffectorTypeId")
     private UserEffectors userEffector;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
