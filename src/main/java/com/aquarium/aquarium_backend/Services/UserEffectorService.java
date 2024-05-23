@@ -2,9 +2,11 @@ package com.aquarium.aquarium_backend.Services;
 
 import com.aquarium.aquarium_backend.Helpers.ControllStruct;
 import com.aquarium.aquarium_backend.Repositories.AquariumRepository;
+import com.aquarium.aquarium_backend.Repositories.EffectorControllRepository;
 import com.aquarium.aquarium_backend.Repositories.EffectorTypeRepository;
 import com.aquarium.aquarium_backend.Repositories.UserEffectorRepository;
 import com.aquarium.aquarium_backend.databaseTables.Aquarium;
+import com.aquarium.aquarium_backend.databaseTables.EffectorControll;
 import com.aquarium.aquarium_backend.databaseTables.EffectorType;
 import com.aquarium.aquarium_backend.databaseTables.UserEffectors;
 
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Service
 public class UserEffectorService {
+  private final EffectorControllRepository effectorControllRepository;
   private final UserEffectorRepository userEffectorRepository;
   private final AquariumRepository aquariumRepository;
   private final EffectorTypeRepository effectorTypeRepository;
@@ -23,11 +26,12 @@ public class UserEffectorService {
   public UserEffectorService(
       UserEffectorRepository userEffectorRepository,
       AquariumRepository aquariumRepository,
-      EffectorTypeRepository effectorTypeRepository) {
+      EffectorTypeRepository effectorTypeRepository, EffectorControllRepository effectorControllRepository) {
     this.userEffectorRepository = userEffectorRepository;
     this.aquariumRepository = aquariumRepository;
     this.effectorTypeRepository = effectorTypeRepository;
     this.emitters = new HashMap<>();
+    this.effectorControllRepository = effectorControllRepository;
   }
 
   public List<UserEffectors> getAllUsers() {
@@ -69,7 +73,14 @@ public class UserEffectorService {
         .findById(controllStruct.getAquariumId())
         .orElseThrow(() -> new Exception("Aquarium doesn't exist"));
     SseEmitter emitter = emitters.get(aquarium);
+    if (controllStruct.getControllActivationMoment() == null) {
+      controllStruct.setControllActivationMoment(java.time.LocalDateTime.now());
+    }
     emitter.send(controllStruct);
-    userEffectorRepository.updateUserEffectorValue(controllStruct.getEffectorId(), controllStruct.getValue());
+    effectorControllRepository.save(
+        new EffectorControll(
+            userEffectorRepository.findById(controllStruct.getEffectorId()).get(),
+            controllStruct.getControllActivationMoment(),
+            controllStruct.getValue()));
   }
 }
