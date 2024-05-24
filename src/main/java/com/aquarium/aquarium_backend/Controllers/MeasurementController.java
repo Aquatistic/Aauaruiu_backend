@@ -43,4 +43,11 @@ public class MeasurementController {
     }
     return new ResponseEntity<>(true, HttpStatus.CREATED);
   }
+
+  @PostMapping("last/{userSensorId}/{count}")
+  public ResponseEntity<List<Measurement>> getLastMeasurements(
+      @PathVariable Long userSensorId, @PathVariable Integer count) {
+    return new ResponseEntity<>(
+        measurementService.getLastMeasurements(userSensorId, count), HttpStatus.OK);
+  }
 }

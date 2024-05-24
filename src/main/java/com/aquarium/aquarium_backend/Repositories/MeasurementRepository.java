@@ -11,4 +11,7 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
 
   @Query("Select mes from Measurement mes where mes.userSensor.userSensorId= :userSensorId")
   List<Measurement> findMeasurementsByUserSensorId(Long userSensorId);
+
+  @Query("Select mes from Measurement mes where mes.userSensor.userSensorId= :userSensorId order by mes.measurementTimestamp desc FETCH NEXT :count ROWS ONLY")
+  public List<Measurement> findLastMeasurements(Long userSensorId, Integer count);
 }

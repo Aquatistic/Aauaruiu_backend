@@ -41,4 +41,8 @@ public class MeasurementService {
   public List<Measurement> getMeasurementsByUserSensorId(Long userSensorId) {
     return measurementRepository.findMeasurementsByUserSensorId(userSensorId);
   }
+
+  public List<Measurement> getLastMeasurements(Long userSensorId, Integer count) {
+    return measurementRepository.findLastMeasurements(userSensorId, count);
+  }
 }
