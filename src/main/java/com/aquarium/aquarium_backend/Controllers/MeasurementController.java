@@ -43,4 +43,18 @@ public class MeasurementController {
     }
     return new ResponseEntity<>(true, HttpStatus.CREATED);
   }
+
+  @GetMapping("last/{userSensorId}/{count}")
+  public ResponseEntity<List<Measurement>> getLastMeasurements(
+      @PathVariable Long userSensorId, @PathVariable Integer count) {
+    return new ResponseEntity<>(
+        measurementService.getLastMeasurements(userSensorId, count), HttpStatus.OK);
+  }
+
+  @GetMapping("lastDays/{userSensorId}/{days}")
+  public ResponseEntity<List<Measurement>> getLastDaysMeasurements(
+      @PathVariable Long userSensorId, @PathVariable Integer days) {
+    return new ResponseEntity<>(
+        measurementService.getLastDaysMeasurements(userSensorId, days), HttpStatus.OK);
+  }
 }
