@@ -34,8 +34,6 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers("/api/v1/userEffector/connect/**")
                     .permitAll()
-                    .requestMatchers("/api/v1/userEffector/update") // TODO remove this
-                    .permitAll()
                     .anyRequest()
                     .authenticated())
         .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
