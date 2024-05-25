@@ -32,7 +32,7 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers("/api/v1/measurements/add")
                     .permitAll()
-                    .requestMatchers("/api/v1/userEffector/connect")
+                    .requestMatchers("/api/v1/userEffector/connect/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated())
