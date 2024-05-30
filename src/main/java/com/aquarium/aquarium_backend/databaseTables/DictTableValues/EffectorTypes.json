@@ -8,11 +8,7 @@
         "unit": "g"
     },
     {
-        "name": "Heater",
-        "unit": "V"
-    },
-    {
-        "name": "Pump",
-        "unit": "rpm"
+        "name": "Switch",
+        "unit": "bool"
     }
 ]
