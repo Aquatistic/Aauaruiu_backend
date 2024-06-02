@@ -17,10 +17,12 @@ public class MeasurementService {
 
   @Autowired
   public MeasurementService(
-          MeasurementRepository measurementRepository, UserSensorRepository userSensorRepository, NotificationService notificationService) {
+      MeasurementRepository measurementRepository,
+      UserSensorRepository userSensorRepository,
+      NotificationService notificationService) {
     this.measurementRepository = measurementRepository;
     this.userSensorRepository = userSensorRepository;
-      this.notificationService = notificationService;
+    this.notificationService = notificationService;
   }
 
   public List<Measurement> getAllMeasurements() {
@@ -33,7 +35,9 @@ public class MeasurementService {
         var userSensor = userSensorRepository.findById(measurement.getSecond()).get();
         measurement.getFirst().setUserSensor(userSensor);
         if (!measurement.getFirst().getAlarmStatus()) {
-          notificationService.notifyUser(measurement.getFirst().getUserSensor().getAquarium().getUser().getUserId(), "Alarm status is false");
+          notificationService.notifyUser(
+              measurement.getFirst().getUserSensor().getAquarium().getUser().getUserId(),
+              "Alarm status is false");
         }
         measurementRepository.save(measurement.getFirst());
       } catch (Exception e) {

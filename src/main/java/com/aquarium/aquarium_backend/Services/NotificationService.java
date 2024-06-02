@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotificationService {
 
-    private final SimpMessagingTemplate simpMessagingTemplate;
+  private final SimpMessagingTemplate simpMessagingTemplate;
 
-    public NotificationService(SimpMessagingTemplate simpMessagingTemplate) {
-        this.simpMessagingTemplate = simpMessagingTemplate;
-    }
+  public NotificationService(SimpMessagingTemplate simpMessagingTemplate) {
+    this.simpMessagingTemplate = simpMessagingTemplate;
+  }
 
-    public void notifyUser(Long userId, String message) {
-        simpMessagingTemplate.convertAndSendToUser(String.valueOf(userId), "/queue/notifications", message);
-    }
+  public void notifyUser(Long userId, String message) {
+    simpMessagingTemplate.convertAndSendToUser(
+        String.valueOf(userId), "/queue/notifications", message);
+  }
 }
